@@ -8,7 +8,7 @@ class DisjointSet {
     this.items[item] = item;
   }
   union(value1, value2) {
-    if (!this.items[value1] && !this.items[value1]) {
+    if (!this.items[value1] || !this.items[value2]) {
       throw new Error("DisjointSet Items missing for corresponding values");
     }
     let disjointSetItem1 = this.items[value1];
@@ -56,7 +56,7 @@ class DisjointSetItem {
       return this;
     }
 
-    this.parent = this.find.call(this.parent); //using path compression
+    this.parent = this.find.call(this.parent); // using path compression by updating parent to point to root parent directly
 
     return this.parent;
   }
